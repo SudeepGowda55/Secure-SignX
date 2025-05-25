@@ -34,6 +34,7 @@ Secure SignX involves two major components
 ## Sign Protocol Integration
 
 Sign Protocol serves as the backbone for our attestation system, providing an immutable, on-chain verification layer. Our implementation uses EIP-712 typed data signatures to create cryptographically secure attestations.
+![Screenshot 2025-05-26 014903](https://github.com/user-attachments/assets/2506737b-01c0-4414-9d95-d6a69939a17b)
 
 ### Schema Architecture
 
