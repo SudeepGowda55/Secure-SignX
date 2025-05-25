@@ -1,0 +1,13 @@
+{
+  "name": "audit-bot-xmtp",
+  "type": "module",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "dependencies": {
+    "@xmtp/message-kit": "latest"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
