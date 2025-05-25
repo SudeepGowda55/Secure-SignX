@@ -33,6 +33,8 @@ Secure SignX involves two major components
 ## Sign Protocol Integration
 
 Sign Protocol serves as the backbone for our attestation system, providing an immutable, on-chain verification layer. Our implementation uses EIP-712 typed data signatures to create cryptographically secure attestations.
+<br />
+
 ![Screenshot 2025-05-26 014903](https://github.com/user-attachments/assets/2506737b-01c0-4414-9d95-d6a69939a17b)
 
 ### Schema Architecture
@@ -57,6 +59,8 @@ Currently, the Secure SignX Attestation Schema is deployed on **Base Sepolia Tes
 
 
 You can view the **Attestations created on Sign Protocol** from here (https://testnet-scan.sign.global/schema/onchain_evm_84532_0x22c)
+<br />
+
 ![Screenshot 2025-05-26 014938](https://github.com/user-attachments/assets/210cd664-d063-43f1-b1b3-d62e018ded96)
 
 <br />
