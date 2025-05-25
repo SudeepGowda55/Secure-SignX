@@ -122,4 +122,4 @@ To see available commands and functionality, simply type **"help"** in the conve
 
 4. If you are the compliance officer, after you visit the dashboard click on **Attestation creation page**.
 
-5. After attestation is created, a notification will be sent to the respective employer and the manager.
+5. After attestation is created, a notification will be sent to the respective employer and the manager
