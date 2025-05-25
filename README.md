@@ -78,6 +78,7 @@ The second major component is the **XMTP Protocol** (Extensible Message Transpor
 - **Message Signing**: ECDSA with secp256k1 curve (compatible with Ethereum wallets)
 - **Network**: XMTP Production Network
 - **Message Format**: Protobuf-encoded payloads
+![Screenshot 2025-05-26 014756](https://github.com/user-attachments/assets/e4055187-bf89-4ea0-8cac-97b246842706)
 
 ### Notification System
 
