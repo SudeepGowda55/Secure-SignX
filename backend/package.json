@@ -1,0 +1,23 @@
+{
+  "name": "attestation-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ethsign/sp-sdk": "^1.2.7",
+    "@google/generative-ai": "^0.24.0",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "redis": "^4.7.0",
+    "viem": "^2.26.2"
+  }
+}
