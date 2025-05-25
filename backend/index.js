@@ -53,8 +53,8 @@ const getAIContext = async (key) => {
 };
 
 function determineUserRole(senderAddress) {
-  const complianceOfficerAddress = "0xF6C3E769D1cA665C93ec15f683D8da84F79BBd19";
-  const managerAddress = "0xCc213DB18f8Bc2e58855cBF4Fb322162f6958F72";
+  const complianceOfficerAddress = process.env.COMPLIANCE_OFFICER_ADDRESS;
+  const managerAddress = process.env.MANAGER_ADDRESS;
 
   if (senderAddress === complianceOfficerAddress) {
     return "compliance officer";
@@ -82,11 +82,7 @@ async function generateAIResponse(prompt, senderAddress, documentHash = null) {
         Hash: ${doc.document_hash}
         Status: ${doc.compliance_status || "N/A"}
         IPFS: ${doc.ipfs_cid || "N/A"}
-        ${
-          doc.rejection_reason
-            ? `Rejection Reason: ${doc.rejection_reason}`
-            : ""
-        }
+        ${doc.rejection_reason ? `Rejection Reason: ${doc.rejection_reason}` : ""}
       `;
     }
   }
@@ -104,9 +100,7 @@ async function generateAIResponse(prompt, senderAddress, documentHash = null) {
   const match = promptLC.match(/documents from customer (0x[a-fA-F0-9]{40})/);
   if (match && match[1]) {
     const customerAddr = match[1].toLowerCase();
-    const docsFromUser = allDocs.filter(
-      (doc) => doc.submitter?.toLowerCase() === customerAddr
-    );
+    const docsFromUser = allDocs.filter((doc) => doc.submitter?.toLowerCase() === customerAddr);
 
     if (docsFromUser.length > 0) {
       analyticContext += `Found ${docsFromUser.length} documents from customer ${customerAddr}:\n`;
@@ -167,9 +161,7 @@ app.get("/documents/user/:address", authenticateToken, async (req, res) => {
   try {
     const address = req.params.address.toLowerCase();
     const allDocs = await getAllDocuments();
-    const userDocs = allDocs.filter(
-      (doc) => doc.submitter?.toLowerCase() === address
-    );
+    const userDocs = allDocs.filter((doc) => doc.submitter?.toLowerCase() === address);
 
     res.json({ success: true, documents: userDocs });
   } catch (error) {
@@ -211,11 +203,7 @@ app.post("/ai/query", authenticateToken, async (req, res) => {
       });
     }
 
-    const aiResponse = await generateAIResponse(
-      prompt,
-      senderAddress,
-      documentHash
-    );
+    const aiResponse = await generateAIResponse(prompt, senderAddress, documentHash);
     res.json({ success: true, response: aiResponse });
   } catch (error) {
     console.error("AI query error:", error);
@@ -252,9 +240,7 @@ app.post("/documents", authenticateToken, async (req, res) => {
   try {
     const document = req.body;
     await storeDocument(document.document_hash, document);
-    res
-      .status(201)
-      .json({ success: true, documentHash: document.document_hash });
+    res.status(201).json({ success: true, documentHash: document.document_hash });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
@@ -276,9 +262,7 @@ app.get("/documents/:hash", authenticateToken, async (req, res) => {
 app.get("/documents", authenticateToken, async (req, res) => {
   try {
     const { status } = req.query;
-    const documents = status
-      ? await getDocumentsByStatus(status)
-      : await getAllDocuments();
+    const documents = status ? await getDocumentsByStatus(status) : await getAllDocuments();
     res.json({ success: true, documents });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
@@ -291,9 +275,7 @@ app.put("/documents/:hash", authenticateToken, async (req, res) => {
     const existingDoc = await getDocument(hash);
 
     if (!existingDoc || !existingDoc.document_hash) {
-      return res
-        .status(404)
-        .json({ success: false, error: "Document not found" });
+      return res.status(404).json({ success: false, error: "Document not found" });
     }
 
     const updatedDoc = { ...existingDoc, ...req.body };
@@ -306,20 +288,11 @@ app.put("/documents/:hash", authenticateToken, async (req, res) => {
 
 app.post("/record", authenticateToken, async (req, res) => {
   try {
-    const {
-      documentName,
-      documentHash,
-      ipfsCID,
-      attestor,
-      submitter,
-      complianceStatus,
-    } = req.body;
+    const { documentName, documentHash, ipfsCID, attestor, submitter, complianceStatus } = req.body;
 
     const existingDoc = await getDocument(documentHash);
     if (!existingDoc || !existingDoc.document_hash) {
-      return res
-        .status(404)
-        .json({ success: false, error: "Document not found" });
+      return res.status(404).json({ success: false, error: "Document not found" });
     }
 
     const updatedDoc = {
