@@ -61,7 +61,7 @@ const UploadPage = () => {
         document_name: file.name,
         document_hash: ipfsCid,
         ipfs_cid: ipfsCid,
-        attestor: "0xF6C3E769D1cA665C93ec15f683D8da84F79BBd19",
+        attestor: "0x9255130EAFE3EC14Ad78EB984BFc5CF2793650C1",
         submitter: address,
         compliance_status: "submitted",
         view: `https://ipfs.io/ipfs/${ipfsCid}`,
