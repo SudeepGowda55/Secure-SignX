@@ -12,21 +12,47 @@
 
 🧪 Secure SignX is a decentralized compliance and audit trail system for managing document Attestations via Sign Protocol, with Secure communication through XMTP and streamlined interactions using a MessageKit Bot
 
+## Overview
+
+Secure SignX leverages blockchain technology to create an immutable, transparent, and decentralized system for document compliance management. Built using modern web development frameworks including Next.js and React, the platform ensures secure document attestation through distributed ledger technology.
+
+### Technology Stack
+
+- **Frontend**: Next.js, React.js, TailwindCSS, JavaScript/JSX
+- **Backend**: Node.js, Express
+- **Blockchain**: EVM-compatible chains (Base Sepolia Testnet)  
+- **Protocols**: 
+  - Sign Protocol (for on-chain attestations)
+  - XMTP (Extensible Message Transport Protocol) for secure communications
+  - IPFS (InterPlanetary File System) for decentralized document storage
+- **Authentication**: Web3 wallet-based authentication (MetaMask, WalletConnect)
+- **Bot Infrastructure**: MessageKit for automated compliance notifications
+
 Secure SignX involves two major components
 
-**Sign Protocol**
+## Sign Protocol Integration
 
-Currently, the Secure SignX Attestation Schema is deployed on **Base Sepolia Testnet**
+Sign Protocol serves as the backbone for our attestation system, providing an immutable, on-chain verification layer. Our implementation uses EIP-712 typed data signatures to create cryptographically secure attestations.
+
+### Schema Architecture
+
+Currently, the Secure SignX Attestation Schema is deployed on **Base Sepolia Testnet** (Chain ID: 84532)
 
 [SecureSignx Sign Protocol Schema](https://testnet-scan.sign.global/schema/onchain_evm_84532_0x22c)
 
-Workflow:
+### Technical Implementation
 
-1. The employee should connect his wallet and then needs to upload the legal Document.
+- **Smart Contract Address**: `0x22c` on Base Sepolia
+- **Document Hashing**: SHA-256 algorithm for document integrity verification
+- **Attestation Structure**: Contains document metadata, IPFS CID, timestamp, attestor signature, and compliance status flags
+
+### Attestation Workflow:
+
+1. The employee connects their Web3 wallet and uploads the legal document to IPFS, generating a unique Content Identifier (CID).
    
-2. Then the attestation to any legal document can be created only by the Compliance Officer/Auditor.
+2. The attestation to any legal document can be created only by the Compliance Officer/Auditor using Sign Protocol's on-chain attestation mechanism.
 
-3. Then the manager can review the attested documents.
+3. The manager can review the attested documents through a cryptographically verified interface, ensuring data integrity.
 
 
 You can view the **Attestations created on Sign Protocol** from here (https://testnet-scan.sign.global/schema/onchain_evm_84532_0x22c)
@@ -39,9 +65,21 @@ You can view the **Attestations created on Sign Protocol** from here (https://te
 
 <br />
 
-The second major component here is **XMTP Protocol**
+## Secure Communications via XMTP Protocol
 
-**XMTP (Extensible Message Transport Protocol)** is used to send real-time notifications to relevant users about document submissions, attestations, and status updates. The system automatically sends notifications to the Manager, Compliance Officer, and Submitter based on the following events:
+The second major component is the **XMTP Protocol** (Extensible Message Transport Protocol), which provides end-to-end encrypted communications within the platform.
+
+### Technical Architecture
+
+- **Protocol Version**: XMTP v1.0
+- **Encryption**: End-to-end encryption using X25519-XSalsa20-Poly1305
+- **Message Signing**: ECDSA with secp256k1 curve (compatible with Ethereum wallets)
+- **Network**: XMTP Production Network
+- **Message Format**: Protobuf-encoded payloads
+
+### Notification System
+
+XMTP is implemented to send real-time notifications to relevant users about document submissions, attestations, and status updates. The system automatically routes encrypted messages to the Manager, Compliance Officer, and Submitter based on the following events:
 
 1. *Document Submission*: When a document is submitted, the bot sends the submission details, including the document name and IPFS CID, to the assigned Compliance Officer for review.
    
@@ -50,9 +88,15 @@ The second major component here is **XMTP Protocol**
        - Manager receives a detailed attestation report containing the document name, IPFS CID, submitter, attestor, and compliance status. <br />
        - Compliance Officer is updated on any changes in document status or approval. <br />
 
-A **Compliance Bot** built using **MessageKit** assists users based on their roles: **Manager**, **Compliance Officer**, and **User**. 
+### MessageKit Compliance Bot
 
-The bot is deployed and can be interacted with at the address: *0x9223a195cbaC6D5411367e7f316F900670a11d77*.
+A **Compliance Bot** built using **MessageKit** assists users based on their roles: **Manager**, **Compliance Officer**, and **User**. The bot utilizes advanced message routing and role-based access controls.
+
+**Technical Details:**
+- **Bot Address**: `0x9223a195cbaC6D5411367e7f316F900670a11d77`
+- **Implementation**: Node.js with XMTP SDK
+- **Event Listeners**: WebSocket-based event monitoring for real-time notifications
+- **Command Parser**: NLP-based command recognition with role-specific permissions
 
 To see available commands and functionality, simply type **"help"** in the conversation with the bot through **XMTP**.
 
