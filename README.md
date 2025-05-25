@@ -5,6 +5,7 @@
 </h4>
 
 <br />
+![SecureSignX](https://ibb.co/YBSgQnG7)
 
 ![SecureSignX](https://github.com/user-attachments/assets/2dbd2c6f-e090-473e-b572-3cf3a8df31e4)
 
@@ -54,19 +55,6 @@ Currently, the Secure SignX Attestation Schema is deployed on **Base Sepolia Tes
 
 3. The manager can review the attested documents through a cryptographically verified interface, ensuring data integrity.
 
-### User Dashboard Interface
-
-![Dashboard Interface](https://github.com/user-attachments/assets/dashboard-interface.png)
-
-*Users can check their attestations and upload new documents through the intuitive dashboard interface. The system displays connected wallet addresses and provides quick access to document management functions.*
-
-### Document Upload Interface
-![Upload Interface](https://ibb.co/7t5JPvnf)
-*Secure document upload interface integrated with IPFS for decentralized storage*
-
-### Main Dashboard
-![Main Dashboard](https://ibb.co/YBSgQnG7)
-*Interactive dashboard showing attestation status and document management options*
 
 You can view the **Attestations created on Sign Protocol** from here (https://testnet-scan.sign.global/schema/onchain_evm_84532_0x22c)
 
@@ -83,9 +71,6 @@ You can view the **Attestations created on Sign Protocol** from here (https://te
 The second major component is the **XMTP Protocol** (Extensible Message Transport Protocol), which provides end-to-end encrypted communications within the platform.
 
 ### Technical Architecture
-
-![XMTP Chat Interface](https://ibb.co/tMqHyLBz)
-*XMTP Web3 Inbox Interface - Secure, decentralized messaging platform*
 
 - **Protocol Version**: XMTP v1.0
 - **Encryption**: End-to-end encryption using X25519-XSalsa20-Poly1305
@@ -138,4 +123,4 @@ To see available commands and functionality, simply type **"help"** in the conve
 
 4. If you are the compliance officer, after you visit the dashboard click on **Attestation creation page**.
 
-5. After attestation is created, a notification will be sent to the respective employer and the manager.
+5. After attestation is created, a notification will be sent to the respective employer and the manager
