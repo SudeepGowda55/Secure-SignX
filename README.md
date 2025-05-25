@@ -129,9 +129,10 @@ To see available commands and functionality, simply type **"help"** in the conve
 
    
 2. If you are an employee upload your legal document like NDA.
-   <img width="1512" alt="Screenshot 2025-05-26 at 1 04 46 AM" src="https://github.com/user-attachments/assets/afd064b7-f678-4a86-b574-47bba6e878dc" />
 
 3. You will get the notification regarding the attestation through the xmtp chat app, Access the chat app from here https://xmtp-chat-app.vercel.app/.
+
+   <img width="1512" alt="Screenshot 2025-05-26 at 1 04 46 AM" src="https://github.com/user-attachments/assets/afd064b7-f678-4a86-b574-47bba6e878dc" />
 
 4. If you are the compliance officer, after you visit the dashboard click on **Attestation creation page**.
 
